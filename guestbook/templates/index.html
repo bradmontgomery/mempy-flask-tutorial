@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% block content %}
+    
+    <form action="{{ url_for('sign') }}" method=post>
+      <dl>
+        <dt>Name
+        <dd><input type=text name=name>
+        <dt>Email:
+        <dd><input type=text name=email>
+        <dd><input type=submit value=Sign>
+      </dl>
+    </form>
+
+    <h2>Signatures</h2>
+    {% for entry in entries %}
+        <p class=entry>
+            {{ entry.name }} &lt;{{ entry.email }}&gt;
+            <br>signed on {{ entry.signed_on }}
+        </p>
+    {% else %}
+        <p class=entry>What!? Nobody's signed!</p>
+    {% endfor %}
+
+{% endblock %}
