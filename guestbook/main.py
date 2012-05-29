@@ -59,17 +59,6 @@ def index():
     entries = [dict(name=row[0], email=row[1], signed_on=row[2] ) for row in _select()]
     return render_template('index.html', entries=entries)
 
-    entries = _select()
-    output = "<html><body>"
-
-    for entry in entries:
-        name, email, date = entry
-        output += "Name: {n}<br>Email: {e}<br>Signed On: {d}".format(n=name, e=email, d=date)
-        output += "<hr>"
-
-    output += "</body></html>"
-    return output
-
 @app.route('/sign', methods=['POST'])
 def sign():
     """
